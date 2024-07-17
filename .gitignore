@@ -1,54 +1,42 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
+*#
+*.iml
+*.ipr
+*.iws
+*.jar
+*.sw?
+*~
+.#*
+.*.md.html
 .DS_Store
+.attach_pid*
+.classpath
+.factorypath
+.gradle
 .idea
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-cypress/videos
-cypress/screenshots
-.nyc_output
-
-# Ignore env local files - https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used
-.env*.local
-
-#amplify
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/mock-data
-amplify/team-provider-info.json
-amplify/backend/amplify-meta.json
-amplify/backend/awscloudformation
-build/
-dist/
-node_modules/
-aws-exports.js
-aws-exports-es5.js
-awsconfiguration.json
-amplifyconfiguration.json
-amplify-build-config.json
-amplify-gradle-config.json
-amplifytools.xcconfig
-
-# Yarn
-# See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-# without zero installs
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+.metadata
+.project
+.recommenders
+.settings
+.springBeans
+.vscode
+/code
+MANIFEST.MF
+_site/
+activemq-data
+bin
+build
+!/**/src/**/bin
+!/**/src/**/build
+build.log
+dependency-reduced-pom.xml
+dump.rdb
+interpolated*.xml
+lib/
+manifest.yml
+out
+overridedb.*
+target
+.flattened-pom.xml
+secrets.yml
+.gradletasknamecache
+.sts4-cache
