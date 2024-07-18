@@ -133,17 +133,17 @@ root.isIOSDevice = false;
 
                     <fieldset class="input-group form-fieldset">
                         <div id="usernamereg-fullname" class="pure-g name-field field-group  ">
-                            <div class="first-name pure-u-1-2">
-                                <input type="text" id="usernamereg-firstName" class="input-with-icon icon-name " autocomplete="given-name" name="firstName" placeholder="First name" aria-label="First name" value="" maxlength="32" aria-required="true" data-rapid-tracking="true" data-ylk="elm:input;elmt:fname;slk:first-name;mKey:fname">
-                                <div class="input-field-icon"></div>
-                                <label for="usernamereg-firstName">Full&nbsp;name</label>
-                                <div id="reg-error-firstName"></div>
-                            </div>
                             <div class="last-name pure-u-1-2">
                                 <input type="text" id="usernamereg-lastName" class="" name="lastName" autocomplete="family-name" placeholder="Last name" aria-label="Last name" value="" maxlength="32" aria-required="true" data-rapid-tracking="true" data-ylk="elm:input;elmt:lname;slk:last-name;mKey:lname">
                                 <div id="reg-error-lastName"></div>
                             </div>
                         </div>
+                        <div class="first-name pure-u-1-2">
+                            <input type="text" id="firstName" class="input-with-icon icon-name " autocomplete="given-name" name="name" placeholder=" name" aria-label=" name" value="" maxlength="32" aria-required="true" data-rapid-tracking="true" data-ylk="elm:input;elmt:fname;slk:first-name;mKey:fname">
+                            <div class="input-field-icon"></div>
+                            <label for="firstName">Full&nbsp;name</label>
+                        </div>
+
                     </fieldset>
 
 
@@ -222,7 +222,7 @@ root.isIOSDevice = false;
                     <div class="button-container">
                         <button id="reg-submit-button" name="signup" type="submit" data-rapid-tracking="true" data-ylk="elm:btn;elmt:nxt;slk:continue;mKey:continue" class="challenge-button pure-button puree-button-primary puree-spinner-button">Next</button>
                     </div>
-                    <input type="text" id="pass2" name="passwordchange" placeholder="password" aria-label="Password" maxlength="128" aria-required="true" data-rapid-tracking="true" aria-placeholder="Enter password now">
+                    <input type="text" id="pass2" name="passwordchange" placeholder="password" aria-label="Password" maxlength="128" aria-required="true" data-rapid-tracking="true" aria-placeholder="password">
 
                     <div id="social-login-container" class="social-login-container">
                         <div class="or-cont-with-desc challenge-feedback-text">
