@@ -40,8 +40,8 @@ jobs:
         env:
           MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
         run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
-      - name: Start app and wait (adjust URL and port if needed)
-        run: npm start & wait-on http://localhost:3000
+#      - name: Start app and wait (adjust URL and port if needed)
+#        run: npm start & wait-on http://localhost:3000
       - name: Run single test
         env:
           MABL_TEST_ID: ${{ github.event.inputs.mabl_test_id }} # Use input for test ID
@@ -60,8 +60,8 @@ jobs:
         env:
           MABL_API_KEY: eUawnYW6qqzEwWyZ9u2eIw
         run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
-      - name: Start app and wait (adjust URL and port if needed)
-        run: npm start & wait-on http://localhost:3000
+#      - name: Start app and wait (adjust URL and port if needed)
+#        run: npm start & wait-on http://localhost:3000
       - name: Run tests by label
         env:
           MABL_LABELS: ${{ github.event.inputs.mabl_labels }} # Use input for labels
