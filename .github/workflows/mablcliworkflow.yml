@@ -38,8 +38,8 @@ jobs:
         run: npm install @mablhq/mabl-cli wait-on
       - name: Authenticate with Mabl
         env:
-          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
-        run: mabl auth activate-key ${{ secrets.MABL_API_KEY }}
+          MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
+        run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
       - name: Start app and wait (adjust URL and port if needed)
         run: npm start & wait-on http://localhost:3000
       - name: Run single test
@@ -58,8 +58,8 @@ jobs:
         run: npm install @mablhq/mabl-cli wait-on
       - name: Authenticate with Mabl
         env:
-          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
-        run: mabl auth activate-key ${{ secrets.MABL_API_KEY }}
+          MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
+        run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
       - name: Start app and wait (adjust URL and port if needed)
         run: npm start & wait-on http://localhost:3000
       - name: Run tests by label
