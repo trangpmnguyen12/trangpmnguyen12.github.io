@@ -1,0 +1,80 @@
+name: Mabl Testing
+
+on:
+  push: # Trigger on push events to master branch (adjust as needed)
+    branches: ["main"]
+    
+  workflow_dispatch:
+    inputs:
+      run_single_test:
+        type: boolean
+        description: "Run a single test by ID"
+        required: false
+      mabl_test_id:
+        type: string
+        description: "Mabl Test ID (for single test)"
+        required: false
+      run_by_label:
+        type: boolean
+        description: "Run tests by label"
+        required: false
+      mabl_labels:
+        type: string
+        description: "Mabl labels (comma separated for test-by-label)"
+        required: false
+      mabl_environment_id:
+        type: string
+        description: "Mabl Environment ID"
+        required: true # This can be mandatory as some tests might require a specific environment
+
+jobs:
+  # Run a single test by ID (optional)
+  single-test:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_single_test }} # Only run if 'run_single_test' input is true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install @mablhq/mabl-cli wait-on
+      - name: Authenticate with Mabl
+        env:
+          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
+        run: mabl auth activate-key ${{ secrets.MABL_API_KEY }}
+      - name: Start app and wait (adjust URL and port if needed)
+        run: npm start & wait-on http://localhost:3000
+      - name: Run single test
+        env:
+          MABL_TEST_ID: ${{ github.event.inputs.mabl_test_id }} # Use input for test ID
+          MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
+        run: mabl tests run --id ${{ github.event.inputs.mabl_test_id }} --environment-id ${{ github.event.inputs.mabl_environment_id }} --headless
+
+  # Run tests by label (optional)
+  test-by-label:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_by_label }} # Only run if 'run_by_label' input is true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install @mablhq/mabl-cli wait-on
+      - name: Authenticate with Mabl
+        env:
+          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
+        run: mabl auth activate-key ${{ secrets.MABL_API_KEY }}
+      - name: Start app and wait (adjust URL and port if needed)
+        run: npm start & wait-on http://localhost:3000
+      - name: Run tests by label
+        env:
+          MABL_LABELS: ${{ github.event.inputs.mabl_labels }} # Use input for labels
+          MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
+        run: mabl tests run --labels ${{ github.event.inputs.mabl_labels }} --environment-id ${{ github.event.inputs.mabl_environment_id }} --headless
+
+  # Run test suite using npm script
+  test-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run test suite
+        run: npm run mabl:test # Adjust script name as needed
+
