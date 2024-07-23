@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install @mablhq/mabl-cli
+        run: npm install -g @mablhq/mabl-cli@latest
       - name: Authenticate with Mabl
         env:
           MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install @mablhq/mabl-cli
+        run: npm install -g @mablhq/mabl-cli@latest
       - name: Authenticate with Mabl
         env:
           MABL_API_KEY: eUawnYW6qqzEwWyZ9u2eIw
