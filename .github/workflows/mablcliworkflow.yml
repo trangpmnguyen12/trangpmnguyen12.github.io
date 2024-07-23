@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install @mablhq/mabl-cli wait-on
+        run: npm install @mablhq/mabl-cli
       - name: Authenticate with Mabl
         env:
           MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
@@ -55,10 +55,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install @mablhq/mabl-cli wait-on
+        run: npm install @mablhq/mabl-cli
       - name: Authenticate with Mabl
         env:
-          MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
+          MABL_API_KEY: eUawnYW6qqzEwWyZ9u2eIw
         run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
       - name: Start app and wait (adjust URL and port if needed)
         run: npm start & wait-on http://localhost:3000
