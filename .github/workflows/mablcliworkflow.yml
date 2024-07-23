@@ -55,7 +55,7 @@ jobs:
         env:
           MABL_TEST_ID: ${{ github.event.inputs.mabl_test_id }} # Use input for test ID
           MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
-        run: mabl tests run --id MABL_TEST_ID --environment-id MABL_ENVIRONMENT_ID --headless
+        run: mabl tests run --id $MABL_TEST_ID --environment-id $MABL_ENVIRONMENT_ID --headless
 
   # Run tests by label (optional)
   test-by-label:
@@ -73,7 +73,7 @@ jobs:
         env:
           MABL_LABELS: ${{ github.event.inputs.mabl_labels }} # Use input for labels
           MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
-        run: mabl tests run --environment-id MABL_ENVIRONMENT_ID --labels MABL_LABELS --headless
+        run: mabl tests run --environment-id $MABL_ENVIRONMENT_ID --labels $MABL_LABELS --headless
         
   test-by-plan-id:
     runs-on: ubuntu-latest
@@ -90,7 +90,7 @@ jobs:
         env:
           MABL_PLAN_ID: ${{ github.event.inputs.mabl_plan_id }} # Use input for labels
           MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
-        run: mabl tests run --environment-id MABL_ENVIRONMENT_ID --from-plan-id MABL_PLAN_ID --headless
+        run: mabl tests run --environment-id $MABL_ENVIRONMENT_ID --from-plan-id $MABL_PLAN_ID --headless
     
 #  mabl-deployment-test:
 #    runs-on: ubuntu-latest
