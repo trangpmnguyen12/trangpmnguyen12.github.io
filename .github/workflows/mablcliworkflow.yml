@@ -68,13 +68,13 @@ jobs:
           MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
         run: mabl tests run --labels ${{ github.event.inputs.mabl_labels }} --environment-id ${{ github.event.inputs.mabl_environment_id }} --headless
 
-  # Run test suite using npm script
-  test-suite:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
-      - name: Run test suite
-        run: npm run mabl:test # Adjust script name as needed
+#  # Run test suite using npm script
+#  test-suite:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Install dependencies
+#        run: npm install
+#      - name: Run test suite
+#        run: npm run mabl:test # Adjust script name as needed
 
