@@ -18,6 +18,10 @@ on:
         type: boolean
         description: "Run tests by label"
         required: false
+      run_by_plan_label:
+        type: boolean
+        description: "Run tests by label"
+        required: false
       mabl_labels:
         type: string
         description: "Mabl labels (comma separated for test-by-label)"
@@ -26,9 +30,9 @@ on:
         type: string
         description: "Mabl Environment ID"
         required: true # This can be mandatory as some tests might require a specific environment
-      mabl_application_id:
+      mabl_plan_labels:
         type: string
-        description: "Mabl Application ID"
+        description: "Mabl Plan Labels"
         required: false # This can be mandatory as some tests might require a specific environment
 
 jobs:
@@ -70,7 +74,27 @@ jobs:
         env:
           MABL_LABELS: ${{ github.event.inputs.mabl_labels }} # Use input for labels
           MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
-        run: mabl tests run --application-id ${{ github.event.inputs.mabl_application_id }} --environment-id ${{ github.event.inputs.mabl_environment_id }} --labels ${{ github.event.inputs.mabl_labels }} --headless
+        run: mabl tests run --environment-id ${{ github.event.inputs.mabl_environment_id }} --labels ${{ github.event.inputs.mabl_labels }} --headless
+        
+  test-by-plan-label:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_by_plan_label }} # Only run if 'run_by_label' input is true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install -g @mablhq/mabl-cli@latest
+      - name: Authenticate with Mabl
+        env:
+          MABL_API_KEY: ${{ secrets.MABL_API_CMD_KEY }}
+        run: mabl auth activate-key ${{ secrets.MABL_API_CMD_KEY }}
+      #      - name: Start app and wait (adjust URL and port if needed)
+      #        run: npm start & wait-on http://localhost:3000
+      - name: Run tests by plan and label
+        env:
+          MABL_LABELS: ${{ github.event.inputs.mabl_labels }} # Use input for labels
+          MABL_ENVIRONMENT_ID: ${{ github.event.inputs.mabl_environment_id }} # Use input for environment ID
+        run: mabl tests run --environment-id ${{ github.event.inputs.mabl_environment_id }} --from-plan-id ${{ github.event.inputs.mabl_plan_labels }} --headless
+    
 
 #  # Run test suite using npm script
 #  test-suite:
