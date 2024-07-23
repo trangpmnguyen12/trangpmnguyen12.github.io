@@ -10,6 +10,7 @@ on:
         type: boolean
         description: "Run a single test by ID"
         required: false
+        default: false
       mabl_test_id:
         type: string
         description: "Mabl Test ID (for single test)"
@@ -18,6 +19,7 @@ on:
         type: boolean
         description: "Run tests by label"
         required: false
+        default: false
       mabl_labels:
         type: string
         description: "Mabl labels (comma separated for test-by-label)"
@@ -26,6 +28,7 @@ on:
         type: boolean
         description: "Run tests by plan id"
         required: false
+        default: true
       mabl_plan_id:
         type: string
         description: "Mabl Plan Id"
