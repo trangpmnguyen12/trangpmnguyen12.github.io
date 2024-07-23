@@ -17,7 +17,7 @@ jobs:
 
       - name: Functional test deployment
         id: mabl-test-deployment
-        uses: mablhq/github-run-tests-action@v1.13.0
+        uses: mablhq/github-run-tests-action@v1.9
         env:
           # Use a "CI/CD Integration" type of mabl API key
           MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
