@@ -23,6 +23,6 @@ jobs:
           MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          application-id: z7L7jZU6WTVG4KjRLC7abQ-a
-          environment-id: smbFvfhb0OrbyPSzVAusvw-e
+          application-id: NKBgGprYFvidNJPHSm1jAw-a
+          environment-id: r6BbhEB5zSdrdc1nbUcXuA-e
         
